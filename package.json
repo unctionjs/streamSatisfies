@@ -1,7 +1,7 @@
 {
-  "name": "@unction/{{FQNAME}}",
+  "name": "@unction/streamsatisfies",
   "version": "1.0.0",
-  "description": "",
+  "description": "Takes a marble string, an assertion, a final state callback, and a stream so that you can assert in tests how a stream will function",
   "keywords": [
     "unction",
     "functional"
@@ -14,9 +14,9 @@
     }
   ],
   "license": "ISC",
-  "homepage": "https://github.com/unctionjs/{{NAME}}#readme",
-  "repository": "github:unctionjs/{{NAME}}",
-  "bugs": "https://github.com/unctionjs/{{NAME}}/issues",
+  "homepage": "https://github.com/unctionjs/streamSatisfies#readme",
+  "repository": "github:unctionjs/streamSatisfies",
+  "bugs": "https://github.com/unctionjs/streamSatisfies/issues",
   "main": "transpiled/source.js",
   "nyc": {
     "require": [
@@ -36,6 +36,7 @@
     "watch": "chokidar './source.js' './test.js' --command 'npm run ci --silent'"
   },
   "devDependencies": {
+    "@unction/mergeright": "2.0.1",
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
@@ -55,9 +56,12 @@
     "flow-bin": "0.51.1",
     "flow-typed": "2.1.5",
     "nyc": "11.1.0",
-    "tap": "10.7.2"
+    "tap": "10.7.2",
+    "xstream": "10.9.0"
   },
   "dependencies": {
-    "ramda": "0.24.1"
+    "@unction/initial": "1.0.0",
+    "@unction/last": "1.0.0",
+    "@unction/split": "1.0.0"
   }
 }

@@ -1,13 +1,36 @@
 /* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type */
 import {test} from "tap"
+import xstream from "xstream"
+import mergeRight from "@unction/mergeright"
 
-import {{NAME}} from "./source.js"
+import streamSatisfies from "./source.js"
 
-test(({same, end}) => {
-  same(
-    {{NAME}}(true),
-    false
+test(({equal, end}) => {
+  const left = xstream.of("a")
+  const right = xstream.of("b")
+
+  streamSatisfies(
+    "b---a---|"
+  )(
+    (given) => (expected) => equal(given, expected)
+  )(
+    () => () => end()
+  )(
+    mergeRight(left)(right)
   )
+})
 
-  end()
+test(({equal, end}) => {
+  const left = xstream.of("a")
+  const right = xstream.of("b")
+
+  streamSatisfies(
+    "b---a--->"
+  )(
+    (given) => (expected) => equal(given, expected)
+  )(
+    () => () => end()
+  )(
+    mergeRight(left)(right)
+  )
 })
