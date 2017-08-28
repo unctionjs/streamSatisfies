@@ -3,7 +3,7 @@ import {test} from "tap"
 import xstream from "xstream"
 import mergeRight from "@unction/mergeright"
 
-import streamSatisfies from "./source.js"
+import streamSatisfies from "./"
 
 test(({equal, end}) => {
   const left = xstream.of("a")
