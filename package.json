@@ -17,7 +17,7 @@
   "homepage": "https://github.com/unctionjs/streamSatisfies#readme",
   "repository": "github:unctionjs/streamSatisfies",
   "bugs": "https://github.com/unctionjs/streamSatisfies/issues",
-  "main": "transpiled/source.js",
+  "main": "transpiled/index.js",
   "nyc": {
     "require": [
       "babel-register"
@@ -63,6 +63,5 @@
     "@unction/initial": "1.0.0",
     "@unction/last": "1.0.0",
     "@unction/split": "1.0.0"
-  },
-  "main": "transpiled/index.js"
+  }
 }
