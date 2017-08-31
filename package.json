@@ -63,5 +63,8 @@
     "@unction/initial": "1.0.0",
     "@unction/last": "1.0.0",
     "@unction/split": "1.0.0"
-  }
+  },
+  "files": [
+    "transpiled/index.js"
+  ]
 }
