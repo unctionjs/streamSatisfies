@@ -1,6 +1,6 @@
 {
   "name": "@unction/streamsatisfies",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Takes a marble string, an assertion, a final state callback, and a stream so that you can assert in tests how a stream will function",
   "keywords": [
     "unction",
