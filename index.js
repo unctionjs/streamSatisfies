@@ -1,12 +1,13 @@
-/* eslint-disable immutable/no-let, no-magic-numbers */
+/* eslint-disable immutable/no-let, no-magic-numbers, no-eval */
 
 import split from "@unction/split"
 import initial from "@unction/initial"
 import last from "@unction/last"
+import mapValues from "@unction/mapvalues"
 
 export default function streamSatisfies (example: string): Function {
-  const marbles = split("-")(example)
-  const expectation = initial(marbles)
+  const marbles = split("--")(example)
+  const expectation = mapValues(eval)(initial(marbles))
   const isCompletable = last(marbles) === "|"
 
   return function streamSatisfiesExample (assertion: mixed => mixed => boolean): Function {

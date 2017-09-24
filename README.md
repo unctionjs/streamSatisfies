@@ -7,7 +7,7 @@
 > string => (mixed => mixed => boolean) => (string => position => any | any => any) => StreamType => any
 
 
-Takes a marble string, an assertion, a final state callback, and a stream so that you can assert in tests how a stream will function. If the last marble node is a "|" then it will make sure the stream has ended.
+Takes a marble string, an assertion, a final state callback, and a stream so that you can assert in tests how a stream will function. If the last marble node is a "|" then it will make sure the stream has ended. Each "marble" will be evaluated before being compared.
 
 ``` javascript
 test(({equal, end}) => {
@@ -15,11 +15,41 @@ test(({equal, end}) => {
   const right = xstream.of("b")
 
   streamSatisfies(
-    "b---a---|"
+    "'b'---'a'---|"
   )(
     (given) => (expected) => equal(given, expected)
   )(
     end
+  )(
+    mergeRight(left)(right)
+  )
+})
+
+test(({equal, end}) => {
+  const left = xstream.of(1)
+  const right = xstream.of(2)
+
+  streamSatisfies(
+    "2---1---|"
+  )(
+    (given) => (expected) => equal(given, expected)
+  )(
+    end
+  )(
+    mergeRight(left)(right)
+  )
+})
+
+test(({equal, end}) => {
+  const left = xstream.of({aaa: "aaa"})
+  const right = xstream.of({bbb: "bbb"})
+
+  streamSatisfies(
+    "{bbb: 'bbb'}--{aaa: 'aaa'}--|"
+  )(
+    (given) => (expected) => equal(given, expected)
+  )(
+    () => () => end()
   )(
     mergeRight(left)(right)
   )
