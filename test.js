@@ -10,7 +10,7 @@ test(({equal, end}) => {
   const right = xstream.of("b")
 
   streamSatisfies(
-    "'b'--'a'--|"
+    "'b'---'a'---|"
   )(
     (given) => (expected) => equal(given, expected)
   )(
@@ -25,7 +25,7 @@ test(({equal, end}) => {
   const right = xstream.of(2)
 
   streamSatisfies(
-    "2--1--|"
+    "2---1---|"
   )(
     (given) => (expected) => equal(given, expected)
   )(
@@ -35,14 +35,14 @@ test(({equal, end}) => {
   )
 })
 
-test(({equal, end}) => {
+test(({same, end}) => {
   const left = xstream.of({aaa: "aaa"})
   const right = xstream.of({bbb: "bbb"})
 
   streamSatisfies(
-    "{bbb: \"bbb\"}--{aaa: \"aaa\"}--|"
+    "{bbb: \"bbb\"}---{aaa: \"aaa\"}---|"
   )(
-    (given) => (expected) => equal(given, expected)
+    (given) => (expected) => same(given, expected)
   )(
     () => () => end()
   )(
@@ -55,7 +55,7 @@ test(({equal, end}) => {
   const right = xstream.of("b")
 
   streamSatisfies(
-    "'b'--'a'-->"
+    "'b'---'a'--->"
   )(
     (given) => (expected) => equal(given, expected)
   )(

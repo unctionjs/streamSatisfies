@@ -6,8 +6,8 @@ import last from "@unction/last"
 import mapValues from "@unction/mapvalues"
 
 export default function streamSatisfies (example: string): Function {
-  const marbles = split("--")(example)
-  const expectation = mapValues(eval)(initial(marbles))
+  const marbles = split("---")(example)
+  const expectation = mapValues((source: string): mixed => eval(`(${source})`))(initial(marbles))
   const isCompletable = last(marbles) === "|"
 
   return function streamSatisfiesExample (assertion: mixed => mixed => boolean): Function {
