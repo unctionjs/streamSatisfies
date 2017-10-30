@@ -59,10 +59,10 @@
     "xstream": "10.9.0"
   },
   "dependencies": {
-    "@unction/initial": "1.26.0",
-    "@unction/last": "1.30.0",
-    "@unction/mapvalues": "3.31.0",
-    "@unction/split": "1.30.0"
+    "@unction/initial": "1.27.0",
+    "@unction/last": "1.31.0",
+    "@unction/mapvalues": "3.32.0",
+    "@unction/split": "1.31.0"
   },
   "files": [
     "transpiled/index.js"
