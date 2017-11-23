@@ -61,8 +61,8 @@
   "dependencies": {
     "@unction/initial": "1.42.0",
     "@unction/last": "1.44.0",
-    "@unction/mapvalues": "3.41.0",
-    "@unction/split": "1.46.0"
+    "@unction/mapvalues": "3.42.0",
+    "@unction/split": "1.47.0"
   },
   "files": [
     "transpiled/index.js"
