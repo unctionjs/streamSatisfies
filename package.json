@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@unction/initial": "1.49.0",
-    "@unction/last": "1.48.0",
+    "@unction/last": "1.49.0",
     "@unction/mapvalues": "3.46.0",
     "@unction/split": "1.51.0"
   },
