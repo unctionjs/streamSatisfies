@@ -61,7 +61,7 @@
   "dependencies": {
     "@unction/initial": "1.48.0",
     "@unction/last": "1.48.0",
-    "@unction/mapvalues": "3.45.0",
+    "@unction/mapvalues": "3.45.1",
     "@unction/split": "1.51.0"
   },
   "files": [
