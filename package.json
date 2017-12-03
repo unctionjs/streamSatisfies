@@ -59,7 +59,7 @@
     "xstream": "10.9.0"
   },
   "dependencies": {
-    "@unction/initial": "1.51.0",
+    "@unction/initial": "1.52.0",
     "@unction/last": "1.49.0",
     "@unction/mapvalues": "3.46.0",
     "@unction/split": "1.52.0"
