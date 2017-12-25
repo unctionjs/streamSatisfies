@@ -1,13 +1,14 @@
 /* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type, no-magic-numbers, flowtype/require-variable-type */
 import {test} from "tap"
-import xstream from "xstream"
-import mergeRight from "@unction/mergeright"
+import {of} from "most"
+import {from} from "most"
+import {merge} from "most"
 
 import streamSatisfies from "./index"
 
 test("String diagram", ({equal, doesNotThrow, end}) => {
-  const left = xstream.of("a")
-  const right = xstream.of("b")
+  const left = of("a")
+  const right = of("b")
 
   streamSatisfies(
     "'b'---'a'---|"
@@ -22,13 +23,13 @@ test("String diagram", ({equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 test("String diagram", ({equal, doesNotThrow, end}) => {
-  const left = xstream.of(1)
-  const right = xstream.of(2)
+  const left = of(1)
+  const right = of(2)
 
   streamSatisfies(
     "2---1---|"
@@ -43,13 +44,13 @@ test("String diagram", ({equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 test("String diagram", ({same, equal, doesNotThrow, end}) => {
-  const left = xstream.of({aaa: "aaa"})
-  const right = xstream.of({bbb: "bbb"})
+  const left = of({aaa: "aaa"})
+  const right = of({bbb: "bbb"})
 
   streamSatisfies(
     "{bbb: \"bbb\"}---{aaa: \"aaa\"}---|"
@@ -64,13 +65,13 @@ test("String diagram", ({same, equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 test("String diagram", ({equal, doesNotThrow, end}) => {
-  const left = xstream.of("a")
-  const right = xstream.of("b")
+  const left = of("a")
+  const right = of("b")
 
   streamSatisfies(
     "'b'---'a'--->"
@@ -85,13 +86,13 @@ test("String diagram", ({equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 test("Array diagram", ({equal, doesNotThrow, end}) => {
-  const left = xstream.of("a")
-  const right = xstream.of("b")
+  const left = of("a")
+  const right = of("b")
 
   streamSatisfies(
     ["b", "a"]
@@ -106,13 +107,13 @@ test("Array diagram", ({equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 test("Array diagram", ({equal, doesNotThrow, end}) => {
-  const left = xstream.of(1)
-  const right = xstream.of(2)
+  const left = of(1)
+  const right = of(2)
 
   streamSatisfies(
     [2, 1]
@@ -127,13 +128,13 @@ test("Array diagram", ({equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 test("Array diagram", ({same, equal, doesNotThrow, end}) => {
-  const left = xstream.of({aaa: "aaa"})
-  const right = xstream.of({bbb: "bbb"})
+  const left = of({aaa: "aaa"})
+  const right = of({bbb: "bbb"})
 
   streamSatisfies(
     [{bbb: "bbb"}, {aaa: "aaa"}]
@@ -148,18 +149,17 @@ test("Array diagram", ({same, equal, doesNotThrow, end}) => {
       end()
     }
   )(
-    mergeRight(left)(right)
+    merge(right, left)
   )
 })
 
 
 test("Array diagram with error", ({equal, match, end}) => {
-  const stream = xstream
-    .from([
-      {unction: () => true},
-      {unction: () => true},
-      null,
-    ])
+  const stream = from([
+    {unction: () => true},
+    {unction: () => true},
+    null,
+  ])
     .map((object) => object.unction())
 
   streamSatisfies(

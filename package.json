@@ -35,7 +35,7 @@
     "watch": "chokidar './index.js' './test.js' --command 'npm run ci --silent'"
   },
   "devDependencies": {
-    "@unction/mergeright": "3.29.0",
+    "most": "1.7.2",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.3",
@@ -57,14 +57,7 @@
     "flow-bin": "0.61.0",
     "flow-typed": "2.2.3",
     "nyc": "11.3.0",
-    "tap": "11.0.0",
-    "xstream": "11.1.0"
-  },
-  "dependencies": {
-    "@unction/initial": "1.53.0",
-    "@unction/last": "1.49.0",
-    "@unction/mapvalues": "3.48.0",
-    "@unction/split": "1.52.0"
+    "tap": "11.0.0"
   },
   "files": [
     "transpiled/index.js"
