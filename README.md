@@ -78,7 +78,7 @@ test("String diagram", ({equal, doesNotThrow, end}) => {
   const right = xstream.of("b")
 
   streamSatisfies(
-    "'b'---'a'--->"
+    "'b'---'a'--=>"
   )(
     (given) => (expected) => equal(given, expected)
   )(
