@@ -1,4 +1,4 @@
-/* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type, no-magic-numbers, flowtype/require-variable-type */
+/* eslint-disable no-magic-numbers, flowtype/require-variable-type */
 import {test} from "tap"
 import {of} from "most"
 import {from} from "most"
