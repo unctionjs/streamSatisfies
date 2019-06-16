@@ -67,7 +67,5 @@
   ],
   "module": "module.js",
   "browser": "browser.js",
-  "dependencies": {
-    "core-js": "3.0.1"
-  }
+  "dependencies": {}
 }
