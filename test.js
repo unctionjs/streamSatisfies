@@ -4,7 +4,7 @@ import {of} from "most";
 import {from} from "most";
 import {merge} from "most";
 
-import streamSatisfies from "./index";
+import streamSatisfies from "./";
 
 test("String diagram", ({equal, doesNotThrow, end}) => {
   const left = of("a");
