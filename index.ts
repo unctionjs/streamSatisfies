@@ -1,19 +1,31 @@
-/* eslint-disable immutable/no-let, no-magic-numbers, no-eval, flowtype/require-variable-type */
-export default function streamSatisfies (example) {
-  return function streamSatisfiesExample (assertion) {
-    return function streamSatisfiesExampleAssertion (failure) {
-      return function streamSatisfiesExampleFailureAssertion (finishing) {
-        return function streamSatisfiesExampleFailureAssertionFinishing (stream) {
-          const marbles = example instanceof Array ? example : example.split("---");
-          const expectation = example instanceof Array ? marbles : Reflect.apply(Array.prototype.slice, marbles, [0, -1]).map((source) => eval(`(${source})`));
-          const isCompletable = example instanceof Array ? true : marbles[marbles.length - 1] === "|";
+import {TextType} from "./types";
+import {MapperFunctionType} from "./types";
+import {PredicateFunctionType} from "./types";
+
+type StreamSubscriptionType<A> = {
+  next: (value: A) => void,
+  error: (exception: unknown) => void,
+  complete: () => void,
+}
+type StreamType<A> = {
+  subscribe: (subscription: StreamSubscriptionType<A>) => void
+}
+
+/* eslint-disable no-magic-numbers, no-eval */
+export default function streamSatisfies<A, B, C, D> (example: TextType | Array<A | string>) {
+  return function streamSatisfiesExample (assertion: MapperFunctionType<B, PredicateFunctionType<A | string>>) {
+    return function streamSatisfiesExampleAssertion (failure: MapperFunctionType<unknown, C>) {
+      return function streamSatisfiesExampleFailureAssertion (finishing: MapperFunctionType<Array<A | string>, MapperFunctionType<number, D>>) {
+        return function streamSatisfiesExampleFailureAssertionFinishing (stream: StreamType<B>): any {
+          const marbles: Array<A | string> = typeof example === "string" ? example.split("---").slice(0, -1)
+            .map((source: TextType) => eval(`(${source})`)) : example;
+          const isCompletable: boolean = typeof example === "string" && marbles[marbles.length - 1] === "|";
 
           let position = 0;
 
-
           return stream.subscribe({
-            next (value) {
-              assertion(value)(expectation[position]);
+            next (value: B) {
+              assertion(value)(marbles[position]);
               position += 1;
             },
 
@@ -23,12 +35,11 @@ export default function streamSatisfies (example) {
 
             complete () {
               if (isCompletable) {
-                finishing(expectation)(position);
+                finishing(marbles)(position);
               } else {
-                finishing(expectation)(position);
+                finishing(marbles)(position);
               }
             },
-
           });
         };
       };

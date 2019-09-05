@@ -4,7 +4,12 @@
 ![Stability][BADGE_STABILITY]
 ![Dependencies][BADGE_DEPENDENCY]
 
-> string => (mixed => mixed => boolean) => (string => position => any | any => any) => StreamType => any
+> (TextType | Array<A | string>) =>
+>  MapperFunctionType<B, PredicateFunctionType<A | string>> =>
+>    MapperFunctionType<unknown, C> =>
+>      MapperFunctionType<Array<A | string>, MapperFunctionType<number, D>> =>
+>        StreamType<B> =>
+>          any
 
 Takes a marble string, an assertion, a final state callback, and a stream so that you can assert in tests how a stream will function. Each marble should be deliniated by a `"---"` notation. If the last marble node is a "|" then it will make sure the stream has ended. Each "marble" will be evaluated before being compared.
 

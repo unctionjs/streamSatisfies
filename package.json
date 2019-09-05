@@ -61,7 +61,7 @@
     "typescript": "3.5.1"
   },
   "files": [
-    "index.js",
+    "index.ts",
     "main.js",
     "main.js.map",
     "browser.js",
@@ -70,5 +70,6 @@
   "module": "module.js",
   "browser": "browser.js",
   "dependencies": {
-  }
+  },
+  "types": "types.d.ts"
 }
