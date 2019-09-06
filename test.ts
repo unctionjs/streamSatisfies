@@ -3,7 +3,7 @@ import { of } from "most";
 import {from} from "most";
 import {merge} from "most";
 
-import streamSatisfies from "./index.ts";
+import streamSatisfies from "./index";
 
 test("String diagram", done => {
   const left = of("a");
