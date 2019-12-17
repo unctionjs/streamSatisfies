@@ -61,6 +61,8 @@
   ],
   "module": "module.js",
   "browser": "browser.js",
-  "dependencies": {},
-  "types": "types.d.ts"
+  "dependencies": {
+  },
+  "types": "types.d.ts",
+  "sideEffects": false
 }
