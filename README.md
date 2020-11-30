@@ -4,7 +4,7 @@
 ![Stability][BADGE_STABILITY]
 ![Dependencies][BADGE_DEPENDENCY]
 
-> (TextType | Array<A | string>) =>
+> (string | Array<A | string>) =>
 >  MapperFunctionType<B, PredicateFunctionType<A | string>> =>
 >    MapperFunctionType<unknown, C> =>
 >      MapperFunctionType<Array<A | string>, MapperFunctionType<number, D>> =>

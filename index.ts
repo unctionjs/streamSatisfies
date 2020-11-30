@@ -1,4 +1,4 @@
-import {TextType} from "./types";
+import {string} from "./types";
 import {MapperFunctionType} from "./types";
 import {PredicateFunctionType} from "./types";
 
@@ -12,13 +12,13 @@ type StreamType<A> = {
 }
 
 /* eslint-disable no-magic-numbers, no-eval */
-export default function streamSatisfies<A, B, C, D> (example: TextType | Array<A | string>) {
+export default function streamSatisfies<A, B, C, D> (example: string | Array<A | string>) {
   return function streamSatisfiesExample (assertion: MapperFunctionType<B, PredicateFunctionType<A | string>>) {
     return function streamSatisfiesExampleAssertion (failure: MapperFunctionType<unknown, C>) {
       return function streamSatisfiesExampleFailureAssertion (finishing: MapperFunctionType<Array<A | string>, MapperFunctionType<number, D>>) {
         return function streamSatisfiesExampleFailureAssertionFinishing (stream: StreamType<B>): any {
           const marbles: Array<A | string> = typeof example === "string" ? example.split("---").slice(0, -1)
-            .map((source: TextType) => eval(`(${source})`)) : example;
+            .map((source: string) => eval(`(${source})`)) : example;
           const isCompletable: boolean = typeof example === "string" && marbles[marbles.length - 1] === "|";
 
           let position = 0;
